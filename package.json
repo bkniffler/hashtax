@@ -1,0 +1,79 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "name": "hashtax",
+  "description": "",
+  "main": "./packages/core",
+  "scripts": {
+    "favicon":
+      "real-favicon generate faviconDescription.json faviconData.json ./packages/core/public/",
+    "up": "npm-check -u",
+    "init": "lerna init --independent",
+    "watch": "gulp watch",
+    "test": "jest && codecov",
+    "es": "eslint packages/** --quiet",
+    "esa": "eslint packages/**",
+    "prettier":
+      "prettier-eslint --write --print-width 80 --single-quote --trailing-comma es5 \"packages/**/*.js\"",
+    "lp": "lerna publish --registry=https://registry.npmjs.org/",
+    "lpf":
+      "lerna publish --registry=https://registry.npmjs.org/ --force-publish",
+    "lb": "lerna bootstrap",
+    "li": "lerna exec --concurrency 1 -- npm i",
+    "lu": "lerna exec --concurrency 1 -- npm-check -u",
+    "lc": "del 'packages/*/package-lock.json'",
+    "special-elev": "lerna exec npm owner add machiaveli88",
+    "special-rename":
+      "renamer --find '.js' --replace '.ts' 'packages/app/**/*.js'",
+    "special-del": "del 'packages/**/*.js' '!packages/**/node_modules/**'"
+  },
+  "engines": {},
+  "bin": "./packages/app/bin/olymp-app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bkniffler/hashtax.git"
+  },
+  "keywords": ["react", "universal", "javascript", "express", "webpack"],
+  "author": "Benjamin Kniffler <bkniffler@me.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bkniffler/hashtax/issues"
+  },
+  "homepage": "https://github.com/bkniffler/hashtax#readme",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
+  "dependencies": {
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-transform-react-pure-class-to-function": "^1.0.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
+    "cli-real-favicon": "0.0.6",
+    "del-cli": "^1.1.0",
+    "electron-log": "^2.2.11",
+    "eslint-config-olymp": "^18.4.2",
+    "webpack": "^3.8.1"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-imports": "^1.4.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "codecov": "^3.0.0",
+    "enzyme": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-changed": "^3.1.1",
+    "gulp-debug": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-watch": "^4.3.11",
+    "jest": "^21.2.1",
+    "lerna": "^2.5.1"
+  }
+}

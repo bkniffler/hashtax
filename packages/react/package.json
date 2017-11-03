@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "name": "hashtax-react",
+  "description": "",
+  "main": "./index.js",
+  "author": "Benjamin Kniffler <bkniffler@me.com>",
+  "license": "MIT",
+  "scripts": {
+    "up": "npm-check -u"
+  },
+  "dependencies": {}
+}
