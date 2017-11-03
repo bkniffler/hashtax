@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "hashtax-html",
   "description": "",
   "main": "./index.js",
@@ -9,6 +9,6 @@
     "up": "npm-check -u"
   },
   "dependencies": {
-    "hashtax": "^1.0.1"
+    "hashtax": "^1.0.3"
   }
 }
