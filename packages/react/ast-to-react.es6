@@ -32,7 +32,7 @@ export default ({ components, decorators, fallback }) => {
   // prepare node converted from string by processLines
   const compile = (context = {}) => (node, key) => {
     const type = node.type || 'text';
-    const children = node.children || [];
+    const children = node.children || node.value || [];
     const decos = node.decorators || [];
     const props = node.args ? { ...context, ...node.args } : { ...context };
     if (key !== undefined) {
