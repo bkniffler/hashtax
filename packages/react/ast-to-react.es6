@@ -1,12 +1,11 @@
 import React, { createElement, isValidElement } from 'react';
 
-const defaultComponent = ({ componentName, children, className, style }) =>
-  (<div style={style} className={className}>
-    <b>
-      Type not found: {componentName}
-    </b>
+const defaultComponent = ({ componentName, children, className, style }) => (
+  <div style={style} className={className}>
+    <b>Type not found: {componentName}</b>
     {children}
-  </div>);
+  </div>
+);
 export default ({ components, decorators, fallback }) => {
   fallback = fallback || defaultComponent;
   const cache = {};
@@ -15,11 +14,15 @@ export default ({ components, decorators, fallback }) => {
     const key = `${name}@${decos.map(x => x.raw).join('|')}`;
     let component = cache[key] || components[name] || fallback;
     const needFallback = !components[name];
-    if (needFallback) { props.componentName = name; }
+    if (needFallback) {
+      props.componentName = name;
+    }
     if (!cache[key]) {
       // cache wrapped component to prevent unmounting/remounting
       decos.forEach(({ type, args }) => {
-        if (decorators[type]) { component = decorators[type](component, args); }
+        if (decorators[type]) {
+          component = decorators[type](component, args);
+        }
       });
 
       cache[key] = component;
@@ -32,8 +35,12 @@ export default ({ components, decorators, fallback }) => {
     const children = node.children || [];
     const decos = node.decorators || [];
     const props = node.args ? { ...context, ...node.args } : { ...context };
-    if (key !== undefined) { props.key = key; }
-    if (node.text) { props.text = node.text; }
+    if (key !== undefined) {
+      props.key = key;
+    }
+    if (node.value) {
+      props.value = node.value;
+    }
     return create(type, props, children.map(compile(context)), decos);
   };
   return compile;
